@@ -38,11 +38,6 @@ on:
         required: false
         type: boolean
         default: false
-      multi_arch:
-        description: 'MultiArch, MacOS only, Optional'
-        required: false
-        type: boolean
-        default: false
       always_on_top:
         description: 'Always on Top, Optional'
         required: false
@@ -51,15 +46,6 @@ on:
       proxy_url:
         description: 'Proxy URL, Optional'
         required: false
-      targets:
-        description: 'Targets, Linux only, Optional'
-        required: false
-        default: 'deb'
-        type: choice
-        options:
-          - 'deb'
-          - 'appimage'
-          - 'rpm'
 
 jobs:
   build:

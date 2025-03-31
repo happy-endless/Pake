@@ -43,6 +43,14 @@ on:
         required: false
         type: boolean
         default: false
+      always_on_top:
+        description: 'Always on Top, Optional'
+        required: false
+        type: boolean
+        default: false
+      proxy_url:
+        description: 'Proxy URL, Optional'
+        required: false
       targets:
         description: 'Targets, Linux only, Optional'
         required: false
@@ -136,6 +144,8 @@ jobs:
           PKG_CONFIG_PATH: /usr/lib/x86_64-linux-gnu/pkgconfig:/usr/share/pkgconfig
           PKG_CONFIG_ALLOW_SYSTEM_LIBS: 1
           PKG_CONFIG_ALLOW_SYSTEM_CFLAGS: 1
+          ALWAYS_ON_TOP: ${{ inputs.always_on_top }}
+          PROXY_URL: ${{ inputs.proxy_url }}
 
       - name: Upload archive
         uses: actions/upload-artifact@v4

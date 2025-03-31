@@ -17,6 +17,8 @@ console.log('fullscreen: ', process.env.FULLSCREEN);
 console.log('hide-title-bar: ', process.env.HIDE_TITLE_BAR);
 console.log('is multi arch? only for Mac: ', process.env.MULTI_ARCH);
 console.log('targets type? only for Linux: ', process.env.TARGETS);
+console.log('always-on-top: ', process.env.ALWAYS_ON_TOP);
+console.log('proxy-url: ', process.env.PROXY_URL);
 console.log('===========================\n');
 
 cd('node_modules/pake-cli');
@@ -28,6 +30,15 @@ if (process.env.HIDE_TITLE_BAR === 'true') {
 
 if (process.env.FULLSCREEN === 'true') {
   params = `${params} --fullscreen`;
+}
+
+
+if (process.env.ALWAYS_ON_TOP === 'true') {
+  params = `${params} --always-on-top`;
+}
+
+if (process.env.PROXY_URL && process.env.PROXY_URL !== '') {
+  params = `${params} --proxy-url ${process.env.PROXY_URL}`;
 }
 
 if (process.env.MULTI_ARCH === 'true') {
@@ -42,6 +53,7 @@ if (process.env.TARGETS) {
 if (process.platform === 'win32' || process.platform === 'linux') {
   params = `${params} --show-system-tray`;
 }
+
 
 const downloadIcon = async iconFile => {
   try {
